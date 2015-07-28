@@ -17,7 +17,7 @@ class stock_inventory(models.Model):
         inventory_lines = inventory_line_obj.search(cr, uid, [('inventory_id', '=', self.id)])
         if inventory_lines:
             for inventory_line in inventory_line_obj.browse(cr, uid, inventory_lines):
-                value += inventory_line.value * inventory_line.product_qty
+                value += inventory_line.value
 
         self.total_value = value
 
@@ -49,10 +49,10 @@ class stock_inventory_line(models.Model):
                         computed_cost_price = pricelist_partnerinfo_obj.browse(cr, uid, pricelist_partnerinfos[0]).price
                     else:
                         computed_cost_price = pricelist_partnerinfo_obj.browse(cr, uid, pricelist_partnerinfos[0]).price / pricelist_partnerinfo_obj.browse(cr, uid, pricelist_partnerinfos[0]).min_quantity
-                    self.value = computed_cost_price
+                    self.value = computed_cost_price * self.product_qty
                 else:
-                    self.value = self.product_id.standard_price     #error
+                    self.value = self.product_id.standard_price * self.product_qty     #error
             else:
-                self.value = self.product_id.standard_price     #error
+                self.value = self.product_id.standard_price * self.product_qty     #error
         else:
-            self.value = self.product_id.standard_price    
+            self.value = self.product_id.standard_price * self.product_qty    
