@@ -11,5 +11,8 @@
 
     It takes the supplier purchase price for each product or the simple purchase price and computes the value for each lines of the inventoty ajustment.
     """,
-    'data': ['view/view_inventory_form.xml',],
+    'data': [
+        'view/view_inventory_form.xml',
+        'report/stock_inventory.xml'
+    ],
 }
