@@ -61,7 +61,7 @@
                                             <td><span t-field="line.location_id"/></td>
                                             <td><span t-field="line.product_id"/></td>
                                             <td class="text-right"><span t-field="line.product_qty"/> <span t-field="line.product_uom_id" groups="product.group_uom"/></td>
-                                            <td>
+                                            <td class="text-right">
                                                 <t t-set="unit_value" t-value="line.value / line.product_qty"/>
                                                 <t t-esc="unit_value"/> €
                                             </td>
