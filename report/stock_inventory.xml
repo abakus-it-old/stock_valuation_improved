@@ -51,18 +51,22 @@
                                         <tr>
                                             <th><strong>Location</strong></th>
                                             <th><strong>Product</strong></th>
+                                            <th width="100px" class="text-right"><strong>Unit Value</strong></th>
                                             <th width="100px" class="text-right"><strong>Checked quantity</strong></th>
                                             <th width="100px" class="text-right"><strong>Value</strong></th>
                                         </tr>
                                     </thead>
                                     <tr t-foreach="o.line_ids" t-as="line">
-                                        <td><span t-field="line.location_id"/></td>
-                                        <td><span t-field="line.product_id"/></td>
-                                        <td class="text-right"><span t-field="line.product_qty"/> <span t-field="line.product_uom_id" groups="product.group_uom"/></td>
-                                        <td class="text-right"><span t-field="line.value"/> €</td>
-                                    </tr>
-                                    <tr>
-                                        <td/>
+                                        <t t-if="line.product_qty > 0">
+                                            <td><span t-field="line.location_id"/></td>
+                                            <td><span t-field="line.product_id"/></td>
+                                            <td>
+                                                <t t-set="unit_value" t-value="line.value / line.product_qty"/>
+                                                <t t-esc="unit_value"/> €
+                                            </td>
+                                            <td class="text-right"><span t-field="line.product_qty"/> <span t-field="line.product_uom_id" groups="product.group_uom"/></td>
+                                            <td class="text-right"><span t-field="line.value"/> €</td>
+                                        </t>
                                     </tr>
                                 </table>
                                 <div class="row">
