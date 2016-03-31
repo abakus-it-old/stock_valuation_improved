@@ -9,7 +9,7 @@
                 <xpath expr="//field[@name='package_id']" position="after">
                     <field name="total_value"/>
                 </xpath>
-                <xpath expr="//tree[@string='Inventory Details']/field[@name='product_qty']" position="after">
+                <xpath expr="//field[@name='product_qty']" position="after">
                     <field name="value"/>
                 </xpath>
             </field>

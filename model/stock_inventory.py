@@ -31,11 +31,5 @@ class stock_inventory_line(models.Model):
         else: # has sellers
             suppliers = self.product_id.seller_ids.sorted(key=lambda r:r.sequence)
             right_supplier = suppliers[0]
+            self.value = round(float(right_supplier.price * self.product_qty ), 2)
 
-            if len(right_supplier.pricelist_ids) < 1: # No pricelist for this product
-                self.value = round(float(self.product_id.standard_price * self.product_qty), 2)
-
-            else: # Pricelist exists
-                supplier_pricelists = right_supplier.pricelist_ids.sorted(key=lambda r:r.min_quantity)
-                pricelist_min = supplier_pricelists[0]
-                self.value = round(float(pricelist_min.price * self.product_qty ), 2)
