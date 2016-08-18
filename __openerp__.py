@@ -1,7 +1,7 @@
 {
     'name': "Stock valuation improved",
     'version': '1.0',
-    'depends': ['stock',],
+    'depends': ['stock'],
     'author': "Valentin THIRION, AbAKUS it-solutions SARL",
     'website': "http://www.abakusitsolutions.eu",
     'category': 'Stock',
